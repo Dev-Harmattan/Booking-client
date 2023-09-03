@@ -1,7 +1,16 @@
+import { Header } from '../components/Header/Header';
+import Hero from '../components/Hero/Hero';
+import './App.css';
 
 function App() {
   return (
-    <span>subscribe Zainkeepscode</span>
+    <div className="App">
+      <div>
+        <div className="white-gradient"></div>
+        <Header />
+        <Hero />
+      </div>
+    </div>
   );
 }
 
