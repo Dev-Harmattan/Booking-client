@@ -16,6 +16,9 @@
   font-family: 'Poppins', sans-serif;
   scroll-behavior: smooth;
 }
+.wrapper {
+  background: white;
+}
 a {
   color: inherit;
   text-decoration: none;
@@ -113,7 +116,7 @@ a {
 
 @media (min-width: 1280px), (min-width: 768px) {
   .paddings {
-    padding: 2rem;
+    padding: 4rem;
   }
 }
 
