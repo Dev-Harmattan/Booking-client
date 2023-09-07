@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { SearchBar } from '../../components/SearchBar/SearchBar';
 import './Properties.css';
 import { useProperties } from '../../hooks/useProperties';
@@ -6,6 +6,7 @@ import { PuffLoader } from 'react-spinners';
 import { PropertyCard } from '../../components/PropertyCard/PropertyCard';
 
 export const Properties = () => {
+  const [filter, searchFilter] = useState('');
   const { data, isError, isLoading } = useProperties();
   if (isError) {
     return (
@@ -32,11 +33,18 @@ export const Properties = () => {
   return (
     <div className="wrapper">
       <div className="paddings flexColCenter innerWidth properties-container">
-        <SearchBar />
+        <SearchBar filter={filter} searchFilter={searchFilter} />
         <div className="paddings flexCenter properties">
-          {data.map((property, index) => (
-            <PropertyCard card={property} key={index} />
-          ))}
+          {data
+            .filter(
+              (property) =>
+                property.title.toLowerCase().includes(filter.toLowerCase()) ||
+                property.city.toLowerCase().includes(filter.toLowerCase()) ||
+                property.country.toLowerCase().includes(filter.toLowerCase())
+            )
+            .map((card, i) => (
+              <PropertyCard card={card} key={i} />
+            ))}
         </div>
       </div>
     </div>
