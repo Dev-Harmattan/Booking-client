@@ -122,7 +122,7 @@ export const Property = () => {
 
             {/* booking button*/}
 
-            {bookings.map((booking) => booking.id).includes(id) ? (
+            {bookings?.map((booking) => booking.id).includes(id) ? (
               <>
                 <Button
                   disabled={cancelling}
