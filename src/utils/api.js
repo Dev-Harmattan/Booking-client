@@ -33,3 +33,81 @@ export const getProperty = async (id) => {
     throw error;
   }
 };
+
+export const createUser = async (email, token) => {
+  try {
+    await api.post(
+      '/user/register',
+      { email },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    console.log('running user registration');
+  } catch (error) {
+    toast.error('Something went wrongs, Please try again');
+    throw error;
+  }
+};
+
+export const bookVisit = async (date, propertyId, email, token) => {
+  try {
+    await api.post(
+      `/user/bookings/${propertyId}`,
+      {
+        date: dayjs(date).format('DD/MM/YYYY'),
+        id: propertyId,
+        email,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+  } catch (error) {
+    toast.error('Error while booking a visit, Please try again');
+    throw error;
+  }
+};
+
+export const removeBooking = async (id, email, token) => {
+  try {
+    await api.post(
+      `/user/cancelBooking/${id}`,
+      {
+        email,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+  } catch (error) {
+    toast.error('Something went wrong, Please try again');
+
+    throw error;
+  }
+};
+
+export const getUserBookings = async (email, token) => {
+  try {
+    return await api.post(
+      `/user/userBookings`,
+      {
+        userEmail: email,
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+  } catch (error) {
+    toast.error('Something went wrong, Please try again');
+    throw error;
+  }
+};

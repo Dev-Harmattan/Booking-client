@@ -3,10 +3,12 @@ import './Header.css';
 import { BiMenuAltRight } from 'react-icons/bi';
 import OutsideClickHandler from 'react-outside-click-handler';
 import { Link, NavLink } from 'react-router-dom';
+import { useAuth0 } from '@auth0/auth0-react';
+import { MenuProfile } from '../MenuProfile/MenuProfile';
 
 const Header = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
-  console.log(toggleMenu);
+  const { loginWithRedirect, isAuthenticated, logout, user } = useAuth0();
 
   const getMenuStyles = () => {
     if (document.documentElement.clientWidth <= 800) {
@@ -26,7 +28,13 @@ const Header = () => {
             <NavLink to="/properties">Properties</NavLink>
             <a href="">Contact</a>
 
-            <button className="button">Login</button>
+            {!isAuthenticated ? (
+              <button className="button" onClick={loginWithRedirect}>
+                Login
+              </button>
+            ) : (
+              <MenuProfile user={user} logout={logout} />
+            )}
           </div>
         </OutsideClickHandler>
 

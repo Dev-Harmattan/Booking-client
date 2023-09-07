@@ -12,3 +12,4 @@ export const useProperties = () => {
   );
   return { data, isLoading, isError, isFetched };
 };
+
