@@ -10,6 +10,8 @@ import { ReactQueryDevtools } from 'react-query/devtools';
 import { Property } from './pages/Property/Property';
 import UserDetailsContext from '../context/UserDetailsContext';
 import 'react-toastify/dist/ReactToastify.css';
+import { Bookings } from './pages/Bookings/Bookings';
+import { Favorites } from './pages/Favorites/Favorites';
 
 function App() {
   const [userDetails, setUserDetails] = useState({
@@ -26,10 +28,12 @@ function App() {
             <Routes>
               <Route element={<Layout />}>
                 <Route path="/" element={<Websites />} />
-                <Route path="/properties">
+                <Route path="properties">
                   <Route index element={<Properties />} />
                   <Route path=":propertyId" element={<Property />} />
                 </Route>
+                <Route path="/bookings" element={<Bookings />} />
+                <Route path="/favorites" element={<Favorites />} />
               </Route>
             </Routes>
           </Suspense>

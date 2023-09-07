@@ -10,11 +10,11 @@ export const MenuProfile = ({ user, logout }) => {
         <Avatar src={user?.picture} radius="xl" />
       </Menu.Target>
       <Menu.Dropdown>
-        <Menu.Item onClick={() => navigate('./favorites', { replace: true })}>
+        <Menu.Item onClick={() => navigate('/favorites', { replace: true })}>
           Favorites
         </Menu.Item>
 
-        <Menu.Item onClick={() => navigate('./bookings', { replace: true })}>
+        <Menu.Item onClick={() => navigate('/bookings', { replace: true })}>
           Bookings
         </Menu.Item>
 
