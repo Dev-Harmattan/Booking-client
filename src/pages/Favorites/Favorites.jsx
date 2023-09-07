@@ -37,7 +37,7 @@ export const Favorites = () => {
   return (
     <div className="wrapper">
       <div className="flexColCenter paddings innerWidth properties-container">
-        <SearchBar filter={filter} setFilter={setFilter} />
+        <SearchBar filter={filter} searchFilter={setFilter} />
 
         <div className="paddings flexCenter properties">
           {
