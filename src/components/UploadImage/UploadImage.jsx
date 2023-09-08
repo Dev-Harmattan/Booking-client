@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from 'react';
 import { AiOutlineCloudUpload } from 'react-icons/ai';
 import './UploadImage.css';
 import { Button, Group } from '@mantine/core';
+const cloudName = import.meta.env.VITE_CLOUDNARY_CLOUD_NAME;
+const uploadPreset = import.meta.env.VITE_CLOUDNARY_UPLOAD_RESET;
 export const UploadImage = ({
   propertyDetails,
   setPropertyDetails,
@@ -19,8 +21,8 @@ export const UploadImage = ({
     cloudinaryRef.current = window.cloudinary;
     widgetRef.current = cloudinaryRef.current.createUploadWidget(
       {
-        cloudName: 'dpwdk0uqe',
-        uploadPreset: 'llydl6fy',
+        cloudName,
+        uploadPreset,
         maxFiles: 1,
       },
       (err, result) => {
